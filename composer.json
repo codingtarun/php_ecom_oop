@@ -1,0 +1,16 @@
+{
+    "name": "tarun/php_ecom",
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "src/Framework",
+            "App\\": "src/App"
+        }
+    },
+    "authors": [
+        {
+            "name": "tarun.c",
+            "email": "tarun.c@sasainfotech.com"
+        }
+    ],
+    "require": {}
+}
