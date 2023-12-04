@@ -20,7 +20,7 @@ class Router
     public function add(string $method, string $path, array $controller)
     {
         /**
-         * Before we can save the route to the array we need to do normalization of the input to avid any route related problems.
+         * Before we can save the route to the array we need to do normalization of the input to avoid any route related problems.
          */
 
         $path = $this->normalizePath($path);
@@ -42,7 +42,7 @@ class Router
         return $path;
     }
 
-    public function dispatch(string $path, string $method)
+    public function dispatch(string $path, string $method, Container $container = null)
     {
         $path = $this->normalizePath($path);
         $method = strtoupper($method);
@@ -53,7 +53,7 @@ class Router
             }
             [$class, $function] = $route['controller'];
 
-            $controllerInstance = new $class;
+            $controllerInstance = $container ? $container->resolve($class) : new $class;
 
             $controllerInstance->$function();
         }
